@@ -1,38 +1,278 @@
+:root {
+  --main-color: rgb(76, 0, 255);
+  --secondary-color: rgb(120, 63, 255);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
 .App {
+  font-family: "Lato", sans-serif;
+}
+
+.footer {
+  visibility: hidden;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+li > * {
+  margin: 1rem;
+}
+
+li {
+  border: rgb(223, 223, 223) solid;
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+
+.article-topic {
+  color: var(--main-color);
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.article-author {
+  font-weight: 900;
+  display: inline;
+  margin-left: 0.5rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.article-date {
+  display: inline;
+  margin-right: 0;
+}
+
+.article-title {
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
+  font-size: 2rem;
+}
+
+.article-votes {
+  display: inline;
+}
+
+.article-comment-count {
+  display: inline;
+  margin-left: 3rem;
+}
+
+.article-share {
+  display: inline;
+  margin-left: 3rem;
+}
+
+.article-card-bottom {
+  margin-bottom: 0.5rem;
+}
+
+.article-card-top {
+  margin-top: 0.5rem;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--main-color);
+  flex: 1;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.article-card {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mobile-nav .nav-links {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  position: absolute;
+
+  width: 30%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+}
+
+.mobile-nav .nav-links .nav-item {
+  font-size: 2rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  text-decoration: none;
+  color: rgb(18, 18, 18);
+}
+.mobile-nav .nav-links .nav-item:hover {
+  color: var(--main-color);
+}
+.nav-item:hover {
+  color: var(--main-color);
+}
+
+.loginIcon {
+  visibility: visible;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.faUserLarge {
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+.burger {
+  flex: 1;
+}
+
+.faBars {
+  font-size: 2rem;
+}
+
+.queries {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 2rem;
+  margin: 2rem 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
 
-.App-link {
-  color: #61dafb;
+.queries > * {
+  margin: 0.5rem 0.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.navigation {
+  display: none;
+}
+
+.mobile-nav {
+  flex: 1;
+  text-align: left;
+  margin: 1rem;
+}
+
+.faBars {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.faCircleXmark {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.faCirclePlus {
+  margin-left: 1rem;
+  color: var(--main-color);
+  font-size: 3rem;
+}
+
+.add-new-article {
+  text-decoration: none;
+  font-size: 2rem;
+  color: black;
+}
+
+@media only screen and (min-width: 660px) {
+  .mobile-nav {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+
+  .git-hub-logo {
+    margin-left: 0.5rem;
+    width: 1.6rem;
+  }
+
+  .footer {
+    visibility: visible;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: rgb(30, 30, 30);
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  .logo {
+    text-decoration: none;
+    font-size: 4rem;
+    font-weight: 900;
+    flex: 2 1 40rem;
+    color: var(--main-color);
+    text-align: left;
+  }
+
+  header {
+    display: flex;
+    flex-direction: row;
+    min-height: 10vh;
+    margin: 1rem;
+    align-items: flex-start;
+  }
+
+  .navigation {
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    flex: 1 1 40rem;
+    justify-content: flex-end;
+    background: none;
+    position: unset;
+  }
+
+  .nav {
+    display: flex;
+    flex: 1 1 40rem;
+    justify-content: flex-end;
+  }
+
+  .nav-item {
+    margin-left: 2.5rem;
+    margin-top: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: rgb(18, 18, 18);
+  }
+  .queries {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2rem;
+    margin: 1rem;
+  }
+
+  .faUserLarge {
+    visibility: hidden;
+  }
+
+  .loginIcon {
+    display: none;
   }
 }
