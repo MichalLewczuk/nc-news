@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getArticles } from "../utils/api";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
@@ -10,18 +10,23 @@ import {
   faComments,
 } from "@fortawesome/free-regular-svg-icons";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import { useSearchParams } from "react-router-dom";
 
 TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
-function Articles() {
+function Articles({ setSelectedTopic }) {
   const [articles, setArticles] = useState([]);
 
+  const [searchParams] = useSearchParams();
+  const topic = searchParams.get("topic");
+  console.log(topic);
   useEffect(() => {
-    getArticles().then((articlesFromApi) => {
+    getArticles(topic).then((articlesFromApi) => {
       setArticles(articlesFromApi);
+      topic ? setSelectedTopic(topic) : setSelectedTopic("all");
     });
-  }, []);
+  }, [topic]);
 
   return (
     <section className="Articles">
@@ -30,7 +35,9 @@ function Articles() {
           return (
             <li key={article.article_id} className="article-card">
               <div className="article-card-top">
-                <h2 className="article-topic">{article.topic}</h2>
+                <Link to={`/articles?topic=${article.topic}`}>
+                  <h2 className="article-topic">{article.topic}</h2>
+                </Link>
                 <h3 className="article-date">
                   {timeAgo.format(Date.parse(article.created_at))} by
                 </h3>
