@@ -35,7 +35,8 @@ ul {
 }
 
 li > * {
-  margin: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 li {
@@ -63,10 +64,19 @@ li {
   margin-right: 0;
 }
 
+.article-title-link {
+  text-decoration: none;
+}
+
 .article-title {
-  margin-top: 1.4rem;
-  margin-bottom: 1.4rem;
+  margin: 0.5rem 1rem;
   font-size: 2rem;
+  color: black;
+}
+
+.article-body {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .article-votes {
@@ -235,7 +245,7 @@ li {
     text-decoration: none;
     font-size: 4rem;
     font-weight: 900;
-    flex: 2 1 40rem;
+    flex: 1 1;
     color: var(--main-color);
     text-align: left;
   }
@@ -250,6 +260,7 @@ li {
 
   .navigation {
     display: block;
+    flex: 6 1;
   }
 
   .nav-links {

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Logo() {
   return (
-    <Link className="logo" to="/">
+    <Link to="/" className="logo">
       JustNews
     </Link>
   );

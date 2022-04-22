@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { getArticles } from "../utils/api";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
@@ -10,7 +10,6 @@ import {
   faComments,
 } from "@fortawesome/free-regular-svg-icons";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
-import { useSearchParams } from "react-router-dom";
 
 TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
@@ -20,7 +19,7 @@ function Articles({ setSelectedTopic }) {
 
   const [searchParams] = useSearchParams();
   const topic = searchParams.get("topic");
-  console.log(topic);
+
   useEffect(() => {
     getArticles(topic).then((articlesFromApi) => {
       setArticles(articlesFromApi);
@@ -44,7 +43,12 @@ function Articles({ setSelectedTopic }) {
 
                 <h3 className="article-author">{article.author}</h3>
               </div>
-              <h1 className="article-title">{article.title}</h1>
+              <Link
+                to={`/articles/${article.article_id}`}
+                className="article-title-link"
+              >
+                <h1 className="article-title">{article.title}</h1>
+              </Link>
               <div className="article-card-bottom">
                 <h2 className="article-votes">
                   <FontAwesomeIcon className="faCircleUp" icon={faCircleUp} />{" "}
